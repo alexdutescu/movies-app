@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<h3>View Booking</h3>
+<table border="1" class="table table-stripped">
+    <tr>
+        <th>Booking Id</th>
+        <th>Email</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Cab Type</th>
+        <th>Estimated Price</th>
+    </tr>
+    <tr th:object ="${booking}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{emailAddress}"></td>
+        <td th:text="*{fromLocation}"></td>
+        <td th:text="*{toLocation}"></td>
+        <td th:text="*{cabType.type}"></td>
+        <td th:text="*{estimatedPrice}"></td>
+    </tr>
+</table>
+<br/>
+<a href="/">Index Page</a>
+</body>
+</html>

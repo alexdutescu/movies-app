@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<h3>Add Booking</h3>
+<h2 th:if = "${errorMessage} != null" th:text = "${errorMessage}" class="text-danger" ></h2>
+<form action="addBooking" method="post" th:object="${reservation}" class="form-group">
+    <label>From City</label>
+    <select th:field = "*{fromLocation}" name="fromCities">
+        <div th:each ="c:${fromCities}">
+            <option th:value="${c}"><span th:text="${c}"></span></option>
+        </div>
+    </select>
+    <br/>
+    <label>To City</label>
+    <select th:field = "*{toLocation}" name="toCities">
+        <div th:each ="c:${toCities}">
+            <option th:value="${c}"><span th:text="${c}"></span></option>
+        </div>
+    </select>
+    <br/>
+    <label>Cab Type</label>
+    <select th:field = "*{cabType}" name="cabTypes">
+        <div th:each ="c:${cabTypes}">
+            <option th:value="${c}"><span th:text="${c.type}"></span></option>
+        </div>
+    </select>
+    <br/>
+    <label>Email</label>
+    <input type="text" th:field = "*{emailAddress}" />
+    <br/>
+    <input type="submit" value="submit" class="btn btn-primary"/>
+    <input type="reset" value="reset" class="btn btn-danger"/>
+</form>
+<a href="/">Index Page</a>
+</body>
+</html>
