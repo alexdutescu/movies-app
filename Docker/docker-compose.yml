@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  eureka_service:
+    build: ../eureka-movies-server/Docker/Dockerfile
+    restart: always
+    ports:
+      - 8761:8761
+  admin_service:
+    build: ../movie-admin/Docker/Dockerfile
+    restart: always
+    ports:
+      - 8762:8762
+    depends_on:
+      - mysql_db
+  booking_service:
+    build: ../movie-booking/Docker/Dockerfile
+    restart: always
+    ports:
+      - 8763:8763
+    depends_on:
+      - mysql_db
+  mysql_db:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: moviebooking
+      MYSQL_USER: alex
+      MYSQL_PASSWORD: alex
+      MYSQL_ROOT_PASSWORD: admin
