@@ -1,3 +1,3 @@
 FROM openjdk:17
-COPY ./target/server-0.0.1-SNAPSHOT.jar .
-CMD ["java","-jar","server-0.0.1-SNAPSHOT.jar"]
+COPY ./target/movie-admin-1.0-SNAPSHOT.jar .
+CMD ["java","-jar","movie-admin-1.0-SNAPSHOT.jar"]
