@@ -1,19 +1,19 @@
 version: "3.7"
 services:
   eureka_service:
-    build: ../eureka-movies-server/Docker/Dockerfile
+    build: ../eureka-movies-server/Docker/.
     restart: always
     ports:
       - 8761:8761
   admin_service:
-    build: ../movie-admin/Docker/Dockerfile
+    build: ../movie-admin/Docker/.
     restart: always
     ports:
       - 8762:8762
     depends_on:
       - mysql_db
   booking_service:
-    build: ../movie-booking/Docker/Dockerfile
+    build: ../movie-booking/Docker/.
     restart: always
     ports:
       - 8763:8763
