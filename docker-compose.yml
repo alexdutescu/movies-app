@@ -1,24 +1,26 @@
-version: "3.7"
+version: "4"
 services:
   eureka_service:
-    build: /eureka-movies-server/Docker/.
+    build:
+      context: /home/ec2-user/movies-app
+      dockerfile: eureka-movies-server/Docker/.
     restart: always
     ports:
       - 8761:8761
-  admin_service:
-    build: /movie-admin/Docker/.
-    restart: always
-    ports:
-      - 8762:8762
-    depends_on:
-      - mysql_db
-  booking_service:
-    build: /movie-booking/Docker/.
-    restart: always
-    ports:
-      - 8763:8763
-    depends_on:
-      - mysql_db
+#  admin_service:
+#    build: /movie-admin/Docker/.
+#    restart: always
+#    ports:
+#      - 8762:8762
+#    depends_on:
+#      - mysql_db
+#  booking_service:
+#    build: /movie-booking/Docker/.
+#    restart: always
+#    ports:
+#      - 8763:8763
+#    depends_on:
+#      - mysql_db
   mysql_db:
     image: "mysql:8.0"
     restart: always
