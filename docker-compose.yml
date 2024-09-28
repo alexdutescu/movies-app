@@ -8,7 +8,8 @@ services:
     ports:
       - 8761:8761
     networks:
-      - default
+      default:
+        ipv4_address: 172.18.0.2
   admin_api:
     container_name: "admin_api"
     build:
@@ -21,7 +22,8 @@ services:
       - eureka_server
       - mysql_db
     networks:
-      - default
+        default:
+          ipv4_address: 172.18.0.4
   booking_api:
     container_name: "booking_api"
     build:
@@ -35,7 +37,8 @@ services:
       - mysql_db
       - admin_api
     networks:
-      - default
+      default:
+        ipv4_address: 172.18.0.5
   mysql_db:
     container_name: "mysql_db"
     image: "mysql:8.3"
@@ -43,7 +46,8 @@ services:
     ports:
       - 3306:3306
     networks:
-      - default
+      default:
+        ipv4_address: 172.18.0.3
     environment:
       MYSQL_DATABASE: moviebooking
       MYSQL_USER: alex
@@ -51,4 +55,8 @@ services:
       MYSQL_ROOT_PASSWORD: admin
 networks:
   default:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+        - gateway: 172.18.0.1
     driver: bridge
