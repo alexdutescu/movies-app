@@ -1,12 +1,15 @@
 services:
   eureka_server:
-    image: "springcloud/eureka"
-    hostname: eureka_server
+    container_name: "eureka_server"
+    build:
+      context: /root/movies-app
+      dockerfile: eureka-movies-server/Docker/Dockerfile
+    restart: always
     ports:
-      - "8761:8761"
+      - 8761:8761
     networks:
       - default
-  admin_service:
+  admin_api:
     container_name: "admin_api"
     build:
       context: /root/movies-app
@@ -19,7 +22,7 @@ services:
       - mysql_db
     networks:
       - default
-  booking_service:
+  booking_api:
     container_name: "booking_api"
     build:
       context: /root/movies-app
