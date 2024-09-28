@@ -14,8 +14,11 @@ server:
   
 eureka:
   instance:
-    hostname: eureka_server
+    hostname: admin_api
+    prefer-ip-address: true
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka_server:8761/eureka/
 
