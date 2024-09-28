@@ -1,6 +1,6 @@
 services:
   eureka_server:
-    image: "spring-cloud-netflix-example/eureka-server"
+    image: "springcloud/eureka"
     hostname: eureka_server
     ports:
       - "8761:8761"
