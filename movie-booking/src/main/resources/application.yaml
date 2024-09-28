@@ -14,8 +14,8 @@ server:
   
 eureka:
   instance:
-    statusPageUrlPath: http://booking_api:8763/eureka/info
-    healthCheckUrlPath: http://booking_api:8763/eureka/health
+    statusPageUrlPath: http://localhost:8763/eureka/info
+    healthCheckUrlPath: http://localhost:8763/eureka/health
   client:
     serviceUrl:
       defaultZone: http://eureka_server:8761/eureka/
