@@ -1,5 +1,6 @@
 services:
   eureka_service:
+    container_name: "eureka_server"
     build:
       context: /root/movies-app
       dockerfile: eureka-movies-server/Docker/Dockerfile
@@ -9,6 +10,7 @@ services:
     networks:
       - default
   admin_service:
+    container_name: "admin_api"
     build:
       context: /root/movies-app
       dockerfile: movie-admin/Docker/Dockerfile
@@ -21,6 +23,7 @@ services:
     networks:
       - default
   booking_service:
+    container_name: "booking_api"
     build:
       context: /root/movies-app
       dockerfile: movie-booking/Docker/Dockerfile
@@ -33,6 +36,7 @@ services:
     networks:
       - default
   mysql_db:
+    container_name: "mysql_db"
     image: "mysql:8.3"
     restart: always
     ports:
