@@ -1,6 +1,6 @@
 spring:
   application: 
-    name: movie-admin
+    name: admin_api
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://mysql_db:3306/moviebooking
@@ -14,8 +14,7 @@ server:
   
 eureka:
   instance:
-    statusPageUrlPath: http://admin_api:8762/eureka/info
-    healthCheckUrlPath: http://admin_api:8762/eureka/health
+    hostname: eureka_server
   client:
     serviceUrl:
       defaultZone: http://eureka_server:8761/eureka/
