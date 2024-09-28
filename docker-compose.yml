@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - 8761:8761
+    networks:
+      - default_network
   admin_service:
     build:
       context: /root/movies-app
@@ -17,6 +19,8 @@ services:
     depends_on:
       - eureka_service
       - mysql_db
+    networks:
+      - default_network
   booking_service:
     build:
       context: /root/movies-app
@@ -27,6 +31,8 @@ services:
     depends_on:
       - eureka_service
       - mysql_db
+    networks:
+      - default_network
   mysql_db:
     image: "mysql:8.0"
     restart: always
@@ -37,3 +43,7 @@ services:
       MYSQL_USER: alex
       MYSQL_PASSWORD: alex
       MYSQL_ROOT_PASSWORD: admin
+networks:
+  default_network:
+    name: defaultNetwork
+    driver: bridge
