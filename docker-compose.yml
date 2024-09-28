@@ -33,6 +33,7 @@ services:
     depends_on:
       - eureka_server
       - mysql_db
+      - admin_api
     networks:
       - default
   mysql_db:
