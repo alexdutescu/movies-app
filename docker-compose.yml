@@ -1,12 +1,9 @@
 services:
-  eureka_service:
-    container_name: "eureka_server"
-    build:
-      context: /root/movies-app
-      dockerfile: eureka-movies-server/Docker/Dockerfile
-    restart: always
+  eureka_server:
+    image: "spring-cloud-netflix-example/eureka-server"
+    hostname: eureka_server
     ports:
-      - 8761:8761
+      - "8761:8761"
     networks:
       - default
   admin_service:
@@ -18,7 +15,7 @@ services:
     ports:
       - 8762:8762
     depends_on:
-      - eureka_service
+      - eureka_server
       - mysql_db
     networks:
       - default
@@ -31,7 +28,7 @@ services:
     ports:
       - 8763:8763
     depends_on:
-      - eureka_service
+      - eureka_server
       - mysql_db
     networks:
       - default
