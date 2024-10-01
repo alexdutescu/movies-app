@@ -1,3 +1,8 @@
+logging:
+  level:
+    root: error
+    org.springframework: WARN
+    com.eurekalocal: INFO
 spring:
   application:
     name: eureka_server

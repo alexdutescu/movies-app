@@ -18,7 +18,7 @@ public class Reservation implements java.io.Serializable {
     private Long id;
 
     @Column(name = "email_address", length = 45, nullable = false)
-    private String emailAddress;
+    private String email;
 
     @ManyToOne
     private Movie movie;

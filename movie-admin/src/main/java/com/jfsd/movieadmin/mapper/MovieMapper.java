@@ -29,7 +29,7 @@ public class MovieMapper {
                 movie = movieService.getById(dto.getId());
             }
             if (dto.getMovieType() != null) {
-                movie.setMovieType(MovieType.of(dto.getMovieType()));
+                movie.setMovieType(MovieType.of(dto.getMovieType().toLowerCase()));
             }
             if (dto.getName() != null) {
                 movie.setName(dto.getName());

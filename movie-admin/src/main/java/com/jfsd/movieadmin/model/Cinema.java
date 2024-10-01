@@ -1,9 +1,8 @@
 package com.jfsd.movieadmin.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
@@ -11,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "cinemas")
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class Cinema implements java.io.Serializable {
 
@@ -22,6 +22,7 @@ public class Cinema implements java.io.Serializable {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "cinemas")
     private List<Movie> movies;
 }

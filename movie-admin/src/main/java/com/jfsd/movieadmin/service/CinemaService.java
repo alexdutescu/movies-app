@@ -34,11 +34,15 @@ public class CinemaService {
     }
 
     public Cinema saveCinema(CinemaDTO cinemaDTO) {
-        Set<Movie> movies = movieService.getByIds(
-                cinemaDTO.getMovies().stream()
-                        .map(MovieDTO::getId)
-                        .collect(Collectors.toSet())
-        );
+        Set<Movie> movies = new HashSet<>();
+
+        if (null != cinemaDTO.getMovies()) {
+            movies.addAll(movieService.getByIds(
+                    cinemaDTO.getMovies().stream()
+                            .map(MovieDTO::getId)
+                            .collect(Collectors.toSet()))
+            );
+        }
 
         return cinemaRepository.save(Cinema.builder()
                         .name(cinemaDTO.getName())
